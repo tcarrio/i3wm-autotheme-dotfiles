@@ -1,0 +1,13 @@
+i3-gaps
+polybar
+vim
+rxvt-unicode
+imagemagick
+feh
+nitrogen
+bgs
+hsetroot
+redshift
+compton
+audioctl
+

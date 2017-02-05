@@ -1,0 +1,134 @@
+# reload the configuration file
+bindsym $mod+Shift+c exec "$HOME/bin/walomize"
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym semicolon resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 1 px or 1 ppt
+        bindsym Down resize grow height 1 px or 1 ppt
+        bindsym Up resize shrink height 1 px or 1 ppt
+        bindsym Right resize grow width 1 px or 1 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+#bar {
+#        status_command i3status
+#}
+
+#bar {
+#        status_command conky -c $HOME/.config/i3/conky/conkyrc.og
+#	mode dock
+#	position top
+#	#font pango:open sans 7.8
+#	font pango:open sans 8 
+#	strip_workspace_numbers yes
+# colors {
+#        background #F1F2F6
+#        statusline #788491
+#        separator #51c4d4
+
+#        focused_workspace  #F1F2F6 #F1F2F6 #4FC0E8
+#        active_workspace   #F1F2F6 #F1F2F6 #4FC0E8
+#        inactive_workspace #F1F2F6 #F1F2F6 #C1D1E0
+#        urgent_workspace   #F1F2F6 #F1F2F6 #C1D1E0
+#    }
+# }
+
+
+
+##custom shit
+
+# manipulate titlebars
+#for_window [class="^.*"] border pixel 0
+#for_window [class="discord"] i3-msg "client.focused #1e2124 #1e2124 #ebdbb2 #2e9ef4"
+#for_window [class="code"] i3-msg "client.focused #1e2124 #1e2124 #ebdbb2 #2e9ef4"
+for_window [class="^.*"] border pixel 8
+
+# gaps shit
+#
+#
+gaps inner 20
+gaps outer 32
+#
+#set $mode_gaps Gaps: (o) outer, (i) inner
+#set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+#set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+bindsym $mod+Shift+g mode "$mode_gaps"
+
+mode "$mode_gaps" {
+        bindsym o      mode "$mode_gaps_outer"
+        bindsym i      mode "$mode_gaps_inner"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+} 
+
+mode "$mode_gaps_inner" {
+        bindsym plus  gaps inner current plus 5
+        bindsym minus gaps inner current minus 5
+        bindsym 0     gaps inner current set 0
+
+        bindsym Shift+plus  gaps inner all plus 5
+        bindsym Shift+minus gaps inner all minus 5
+        bindsym Shift+0     gaps inner all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_outer" {
+        bindsym plus  gaps outer current plus 5
+        bindsym minus gaps outer current minus 5
+        bindsym 0     gaps outer current set 0
+
+        bindsym Shift+plus  gaps outer all plus 5
+        bindsym Shift+minus gaps outer all minus 5
+        bindsym Shift+0     gaps outer all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+# some audio controls
+bindsym $mod+F5 exec "playerctl play-pause"
+bindsym $mod+F6 exec "playerctl stop"
+bindsym $mod+F7 exec "playerctl previous"
+bindsym $mod+F8 exec "playerctl next"
+bindsym $mod+F10 exec "/home/tom/bin/audioctl/audioctl.sh sound toggle"
+bindsym $mod+F11 exec "/home/tom/bin/audioctl/audioctl.sh sound down"
+bindsym $mod+F12 exec "/home/tom/bin/audioctl/audioctl.sh sound up"
+
+# bar toggle, hide or show 
+#bindsym $mod+m bar mode toggle
+bindsym $mod+m sticky toggle
+
+# autostart shit before anything
+#exec_always --no-startup-id feh --bg-fill $HOME/Pictures/spacebg.jpg
+#exec_always --no-startup-id feh --no-fehbg --bg-fill $HOME/Pictures/low-poly-horz-main-inv.png &
+#exec_always --no-startup-id $HOME/Documents/git/wal/wal -i $HOME/Pictures/cityfuture.jpg
+exec_always --no-startup-id /home/tom/.config/polybar/launch.sh
+exec_always --no-startup-id /home/tom/bin/launch_compton.sh
+exec steam -silent
+exec redshift
+exec --no-startup-id i3-msg 'workspace 4; exec spotify'
+exec --no-startup-id i3-msg 'workspace 3; exec discord' 

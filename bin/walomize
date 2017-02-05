@@ -1,0 +1,5 @@
+#!/bin/sh
+
+$HOME/bin/wal -i /$HOME/Pictures/ -q -o $HOME/bin/wal-set
+$HOME/.config/polybar/launch.sh
+i3-msg reload
