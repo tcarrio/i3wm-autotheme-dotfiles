@@ -14,6 +14,7 @@ Pretty simple i3wm stack.
 * [urxvt](http://cvs.schmorp.de/rxvt-unicode/)
 * [ranger](https://github.com/ranger/ranger)
 * [w3m](http://w3m.sourceforge.net/)
+* [font-awesome](https://github.com/FortAwesome/Font-Awesome)
 
 This repo is still under active development and initially served as a starting point for mirroring my desktop config to my laptop. 
 
