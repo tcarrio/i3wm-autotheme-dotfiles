@@ -12,5 +12,9 @@ Pretty simple i3wm stack.
 * [mopidy](https://github.com/mopidy/mopidy){,[-spotify](https://github.com/mopidy/mopidy-spotify)}
 * [cli-visualizer](https://github.com/dpayne/cli-visualizer)
 * [urxvt](http://cvs.schmorp.de/rxvt-unicode/)
+* [ranger](https://github.com/ranger/ranger)
+* [w3m](http://w3m.sourceforge.net/)
 
-This repo is still under active development and initially served as a starting point for mirroring my desktop config to my laptop. Updates to come. 
+This repo is still under active development and initially served as a starting point for mirroring my desktop config to my laptop. 
+
+Updates I've recently made have yet to come. 
